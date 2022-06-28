@@ -99,6 +99,22 @@ configsinstall() {
 	./install.sh headless
 }
 
+backgroundinstall()	 {
+	cd ~/
+	mkdir -pv Pictures/Screenshots
+	cd Pictures
+	git clone https://github.com/CarterDavis03/backgrounds.git
+	SIZE=ultrawide
+	if [[ "${LAPTOP}" == "true" ]]; then
+		SIZE=normal
+	fi
+
+	echo "#!/bin/sh" > ~/.fehbg
+	echo "feh --no-fehbg --bg-scale '$HOME/Pictures/backgrounds/$SIZE/akari.png'" >> ~/.fehbg
+	sudo chmod +x ~/.fehbg
+
+}
+
 mkdir -pv ~/.local/src
 
 # Disable sudo timeout
@@ -114,3 +130,4 @@ dmenuinstall
 slstatusinstall
 bininstall
 configsinstall
+backgroundinstall
