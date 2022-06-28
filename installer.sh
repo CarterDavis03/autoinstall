@@ -84,6 +84,20 @@ slstatusinstall() {
 	sudo make clean install
 }
 
+bininstall() {
+	cd ~/.local
+	git clone https://github.com/CarterDavis03/bin.git
+	cd bin
+	sudo chmod +x *
+}
+
+configsinstall() {
+	cd ~/.local
+	git clone https://github.com/CarterDavis03/configs.git
+	cd configs
+	sudo chmod +x install.sh
+	./install.sh headless
+}
 
 mkdir -pv ~/.local/src
 
@@ -98,3 +112,5 @@ dwminstall
 stinstall
 dmenuinstall
 slstatusinstall
+bininstall
+configsinstall
