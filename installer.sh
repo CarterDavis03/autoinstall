@@ -49,6 +49,7 @@ dwminstall() {
 	sudo chmod +x autostart.sh
 	mkdir -pv ~/.dwm
 	ln -s ./autostart.sh ~/.dwm/
+	sudo cp ./dwm.desktop /usr/share/xsessions
 }
 
 stinstall() {
@@ -99,7 +100,7 @@ configsinstall() {
 	./install.sh headless
 }
 
-backgroundinstall()	 {
+backgroundinstall() {
 	cd ~/
 	mkdir -pv Pictures/Screenshots
 	cd Pictures
@@ -114,6 +115,18 @@ backgroundinstall()	 {
 	sudo chmod +x ~/.fehbg
 
 }
+
+metropolisinstall() {
+	cd ~/.local/src
+	git clone https://github.com/matze/mtheme.git
+	cd mtheme
+	sudo make install
+	cd ..
+	sudo rm -fr mtheme
+}
+
+printf "Thank you for downloading Carter's auto installer.\nThis is to be ran on a fresh install of Arch Linux on your user account.\nOver 10GB of data will be downloaded, most of it will be deleted after installation, however it will take a while.\nIf you do not wish to proceed, press Ctrl+C\nYou will shortly be prompted for your sudo password.\nPress enter to begin:\n"
+read
 
 mkdir -pv ~/.local/src
 
@@ -131,3 +144,6 @@ slstatusinstall
 bininstall
 configsinstall
 backgroundinstall
+metropolisinstall
+
+printf "Installation is now complete.\nType startx if you're in a tty or choose dwm in your login manager to begin.\n"
