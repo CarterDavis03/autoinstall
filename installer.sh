@@ -16,13 +16,13 @@ yayinstall() {
 	sudo pacman -Sy base-devel go git
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
-	makepkg -si
+	makepkg -si --noconfirm
 	cd ..
 	rm -fr yay
 }
 
 installpkgs() {
-	yay -Sy ani-cli-git biber blueman bluez chromium clipit curl dunst feh fish flameshot fzf git htop hunspell hunspell-en_gb i3lock imagemagick keepassxc libreoffice-fresh mpv neovim ntfs-3g nvidia nvidia-settings nvidia-utils pamixer pandoc picom pipewire-pulse pulsemixer python python-neovim ranger rofi solaar spaceship-prompt sxiv texlive-most unclutter unzip w3m wget xclip xdotool xorg-xinit xorg-xprop xorg-xrandr xorg-xset xtrlock zathura zathura-pdf-mupdf zathura-ps zsh zsh-autosuggestions zsh-syntax-highlighting zsh-you-should-use
+	yay -Sy --noconfirm ani-cli-git biber blueman bluez chromium clipit curl dunst feh fish flameshot fzf git htop hunspell hunspell-en_gb i3lock imagemagick keepassxc libreoffice-fresh mpv neovim ntfs-3g nvidia nvidia-settings nvidia-utils pamixer pandoc picom pipewire-pulse pulsemixer python python-neovim ranger rofi solaar spaceship-prompt sxiv texlive-most unclutter unzip w3m wget xclip xdotool xorg-xinit xorg-xprop xorg-xrandr xorg-xset xtrlock zathura zathura-pdf-mupdf zathura-ps zsh zsh-autosuggestions zsh-syntax-highlighting zsh-you-should-use
 
 	sudo chsh -s /bin/zsh $USER
 }
@@ -148,4 +148,7 @@ configsinstall
 backgroundinstall
 metropolisinstall
 
-printf "Installation is now complete.\nPlease reboot and type startx if you're in a tty or choose dwm in your login manager to begin.\n"
+printf "Installation is now complete.\nYour computer will now reboot. To begin, login if you are in a tty or select dwm in your login manager.\nPress enter to reboot:\n"
+read
+
+sudo reboot
