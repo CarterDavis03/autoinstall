@@ -22,12 +22,13 @@ yayinstall() {
 }
 
 installpkgs() {
-	yay -Sy ani-cli-git biber blueman bluez chromium clipit curl dunst feh fish flameshot fzf git htop hunspell hunspell-en_gb i3lock imagemagick keepassxc libreoffice-fresh mpv neovim ntfs-3g nvidia nvidia-settings nvidia-utils pamixer pandoc picom pipewire-pulse pulsemixer python python-neovim ranger rofi solaar spaceship-prompt sxiv texlive-most unclutter unzip w3m wget xclip xdotool xorg-xinit xorg-xprop xorg-xrandr xorg-xset xtrlock zathura zathura-pdf-mupdf zathura-ps zsh zsh-autosuggestions zsh-syntax-highlighting zsh-you-should-use
-
 	# Install drivers for my ASUS laptop
 	if [[ "${LAPTOP}" == "true" ]]; then
 		yay -Sy rtl8821ce-dkms-git acpilight
 	fi
+
+	yay -Sy ani-cli-git biber blueman bluez chromium clipit curl dunst feh fish flameshot fzf git htop hunspell hunspell-en_gb i3lock imagemagick keepassxc libreoffice-fresh mpv neovim ntfs-3g nvidia nvidia-settings nvidia-utils pamixer pandoc picom pipewire-pulse pulsemixer python python-neovim ranger rofi solaar spaceship-prompt sxiv texlive-most unclutter unzip w3m wget xclip xdotool xorg-xinit xorg-xprop xorg-xrandr xorg-xset xtrlock zathura zathura-pdf-mupdf zathura-ps zsh zsh-autosuggestions zsh-syntax-highlighting zsh-you-should-use
+
 
 	sudo chsh -s /bin/zsh $USER
 }
@@ -138,7 +139,9 @@ read
 mkdir -pv ~/.local/src
 
 # Disable sudo timeout
+sudo echo "Authenticated"
 while :; do sudo -v; sleep 59; done &
+sleep 2
 
 laptopcheck
 yayinstall
@@ -152,6 +155,8 @@ bininstall
 configsinstall
 backgroundinstall
 metropolisinstall
+
+echo "$USER ALL=(ALL) NOPASSWD:/usr/bin/systemctl" | sudo tee -a /etc/sudoers
 
 printf "Installation is now complete.\nYour computer will now reboot. To begin, login if you are in a tty or select dwm in your login manager.\nPress enter to reboot:\n"
 read
