@@ -161,4 +161,5 @@ echo "$USER ALL=(ALL) NOPASSWD:/usr/bin/systemctl" | sudo tee -a /etc/sudoers
 printf "Installation is now complete.\nYour computer will now reboot. To begin, login if you are in a tty or select dwm in your login manager.\nPress enter to reboot:\n"
 read
 
+rm -fr ~/installer.sh
 sudo reboot
