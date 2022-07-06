@@ -45,6 +45,7 @@ nerdfonts() {
 
 dwminstall() {
 	cd ~/.local/src
+  rm -fr dwm
 	git clone https://github.com/CarterDavis03/dwm.git
 	cd dwm
 
@@ -62,6 +63,7 @@ dwminstall() {
 
 stinstall() {
 	cd ~/.local/src
+  rm -fr st
 	git clone https://github.com/CarterDavis03/st.git
 	cd st
 
@@ -75,6 +77,7 @@ stinstall() {
 
 dmenuinstall() {
 	cd ~/.local/src
+  rm -fr dmenu
 	git clone https://github.com/CarterDavis03/dmenu.git
 	cd dmenu
 
@@ -88,6 +91,7 @@ dmenuinstall() {
 
 slstatusinstall() {
 	cd ~/.local/src
+  rm -fr slstatus
 	git clone https://github.com/CarterDavis03/slstatus.git
 	cd slstatus
 	sudo make clean install
