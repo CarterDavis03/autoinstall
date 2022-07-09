@@ -140,6 +140,11 @@ metropolisinstall() {
 postinstall() {
   echo "$USER ALL=(ALL) NOPASSWD:/usr/bin/systemctl" | sudo tee -a /etc/sudoers
   sudo systemctl enable bluetooth
+
+  echo "#!/bin/sh" > ~/pathset.sh
+  echo "" >> ~/pathset.sh
+  echo "export PATH=/home/$USER/.local/bin:\$PATH" >> ~/pathset.sh
+  sudo mv ~/pathset.sh /etc/profile.d/
 }
 
 clear
