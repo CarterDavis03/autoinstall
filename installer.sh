@@ -162,6 +162,7 @@ sleep 2
 laptopcheck
 yayinstall
 installpkgs
+nerdfonts
 dwminstall
 stinstall
 dmenuinstall
